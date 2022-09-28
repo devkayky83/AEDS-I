@@ -209,7 +209,7 @@ void ExcluirProjeto(ListaFuncionario *lista)
 
     system("cls");
 
-    cout << "\n Digite o código do projeto: ";
+    cout << "\n Digite o código do funcionário: ";
     cin >> c;
 
     aux2 = BuscarListaFuncionario(c, *lista, &alvo1);
@@ -263,6 +263,8 @@ void FuncionarioExclusaoOficial(ListaFuncionario *lista)
     Apontador aux = lista->primeiro;
 
     int contador = 0;
+
+
 
     while (aux->prox != NULL)
     {
@@ -339,7 +341,7 @@ void ImprimeCC(ListaFuncionario *lista)
 {
     Apontador pont = lista->primeiro->prox;
 
-    int T_horas;
+    int T_horas = 0;
     double Salario_B;
     double Salario_L;
     double INSS;
@@ -349,8 +351,8 @@ void ImprimeCC(ListaFuncionario *lista)
 
     while(pont)
     {
-        cout << "\n ID: " << pont->itens.id << endl;
         cout << "\n Nome " << pont->itens.nome << endl;
+        cout << "\n ID: " << pont->itens.id << endl;
 
         for (int i = 0; i < pont->itens.projetos.ultimo; i++)
         {
@@ -379,10 +381,4 @@ void ImprimeCC(ListaFuncionario *lista)
     system("pause");
     system("cls");
 }
-
-
-
-
-
-
 

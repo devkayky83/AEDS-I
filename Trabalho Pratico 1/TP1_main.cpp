@@ -21,7 +21,7 @@ int main() {
   CriarListaFuncionario(&lista);
 
   FILE *arquivo;
-  arquivo = fopen("Funcionarios e Projetos.bin", "a+b");
+  arquivo = fopen("Funcionarios_e_Projetos.bin", "ab");
   alvo = lista.primeiro;
 
   if (arquivo != NULL)
@@ -51,6 +51,7 @@ int main() {
     {
 
       case 1:
+
       system("cls");
       Funcionario funcionario;
 
@@ -94,6 +95,7 @@ int main() {
       {
         CadastrarProjetos(&lista);  
       }
+
       system("cls");
       break;
 
@@ -124,7 +126,7 @@ int main() {
     }
   }while (opcao != 0);
  
-  arquivo = fopen("Funcionarios e Projetos.bin", "wb");
+  arquivo = fopen("Funcionarios_e_Projetos.txt", "wb");
 
   while(alvo->prox != NULL)
   {
