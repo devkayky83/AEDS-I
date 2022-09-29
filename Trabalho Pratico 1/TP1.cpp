@@ -351,8 +351,9 @@ void ImprimeCC(ListaFuncionario *lista)
 
     while(pont)
     {
-        cout << "\n Nome " << pont->itens.nome << endl;
+        cout << "\n Nome: " << pont->itens.nome << endl;
         cout << "\n ID: " << pont->itens.id << endl;
+        cout << "\n --------------------------------" << endl;
 
         for (int i = 0; i < pont->itens.projetos.ultimo; i++)
         {
