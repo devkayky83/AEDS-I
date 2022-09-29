@@ -32,6 +32,7 @@ void InsereListaFuncionario(ListaFuncionario *lista, Funcionario func)
     lista->ultimo = lista->ultimo->prox;
     lista->ultimo->itens = func;
     lista->ultimo->prox = NULL; 
+    lista->cont++;
 }
 
 void ImprimeFuncionario(ListaFuncionario *lista)
@@ -51,6 +52,8 @@ void ImprimeFuncionario(ListaFuncionario *lista)
     if (atual == 1)
     {
         system("cls");
+        cout << "\n Total de funcionários cadastrados: " << lista->cont;
+        cout << "\n ------------------------------------" << endl;
         cout << "\n Nome: " << alvo1->prox->itens.nome;
         cout << "\n ID: " << alvo1->prox->itens.id;
         cout << "\n Dependentes: " << alvo1->prox->itens.dependentes;

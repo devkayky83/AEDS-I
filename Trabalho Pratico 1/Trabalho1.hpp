@@ -51,6 +51,7 @@ typedef struct ListaFuncionario
 {
     Apontador primeiro;
     Apontador ultimo;
+    int cont = 0;
 };
 
 void Lista_Menu();

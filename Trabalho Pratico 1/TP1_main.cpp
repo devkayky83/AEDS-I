@@ -102,7 +102,7 @@ int main() {
       case 2:
       system("cls");
       CadastrarProjetos(&lista);
-      break;;
+      break;
 
       case 3:
       ExcluirProjeto(&lista);
