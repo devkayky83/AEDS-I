@@ -61,11 +61,7 @@ void ImprimeFuncionario(ListaFuncionario *lista)
         cout << "\n Cidade: " << alvo1->prox->itens.endereco.cidade;
         cout << "\n Bairro: " << alvo1->prox->itens.endereco.bairro;
         cout << "\n Rua: " << alvo1->prox->itens.endereco.rua;
-        cout << "\n Número da casa: " << alvo1->prox->itens.endereco.numero;
-
-        cout << "\n -------------------------" << endl;
-        cout << "\n INFORMAÇÕES DE PROJETOS NESTE FUNCIONÁRIO: " << endl;
-        cout << "\n -------------------------------------------" << endl;
+        cout << "\n Número da casa: " << alvo1->prox->itens.endereco.numero << endl;
 
         ImprimeProjeto(alvo1->prox->itens.projetos);
 
@@ -106,6 +102,8 @@ void ImprimeProjeto(ListaProjetos pro)
 {
     for (int i = 0; i < pro.ultimo; i++)
     {
+        cout << "\n Quantidade de projetos cadastrados neste funcionário: " << pro.ultimo << endl;
+        cout << "\n ---------------------------------------------------------" << endl;
         cout << "\n Código do projeto: " << pro.itens[i].codigo;
         cout << "\n Nome do projeto: " << pro.itens[i].nome;
         cout << "\n Total de horas trabalhadas: " << pro.itens[i].horas << endl;
@@ -267,8 +265,6 @@ void FuncionarioExclusaoOficial(ListaFuncionario *lista)
 
     int contador = 0;
 
-
-
     while (aux->prox != NULL)
     {
         Deletar(aux, lista, &func);
@@ -313,6 +309,7 @@ void DeletarFuncionarioSemProjeto(ListaFuncionario *lista)
     cin >> c;
 
     atual = BuscarListaFuncionario(c, *lista, &alvo1);
+    
     if (atual == 1)
     {
         if (alvo1->prox->itens.projetos.primeiro == alvo1->prox->itens.projetos.ultimo)

@@ -43,6 +43,7 @@ int main() {
   {
     system("cls");
     Lista_Menu();
+
     cout << " Escolha a opção que deseja acessar: ";
     cin >> opcao;
     system("cls");
@@ -126,7 +127,7 @@ int main() {
     }
   }while (opcao != 0);
  
-  arquivo = fopen("Funcionarios_e_Projetos.txt", "wb");
+  arquivo = fopen("Funcionarios_e_Projetos.bin", "wb");
 
   while(alvo->prox != NULL)
   {
