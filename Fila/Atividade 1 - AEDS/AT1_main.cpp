@@ -34,6 +34,9 @@ int main() {
             cout << "\n Digite a sua idade: ";
             cin >> itens.idade;
 
+            cout << "\n Digite o seu número de telefone: ";
+            cin >> itens.telefone;
+
             Inserir(&fila, itens);
 
             cout << "\n Voçê será atendido em breve!" << endl;

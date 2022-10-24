@@ -8,7 +8,7 @@ void Menu()
 {
     cout << "\n Fila - CALL-CENTER" << endl;
     cout << "\n ---------------------";
-    cout << "\n 1. Atender uma pessoa";
+    cout << "\n 1. Recebe uma pessoa";
     cout << "\n 2. Imprime Fila";
     cout << "\n 3. Libera uma pessoa do atendimento";
     cout << "\n 0. Sair";
@@ -72,7 +72,7 @@ void ImprimeFila(CallCenter *fila)
     while (aux != NULL)
     {
         atualiza = atualiza + 1;
-        cout << "\n Nº " << atualiza << " - Nome: " << aux->itens.nome << " | Idade: " << aux->itens.idade;
+        cout << "\n Nº " << atualiza << " - Nome: " << aux->itens.nome << " | Idade: " << aux->itens.idade << " | Telefone: " << aux->itens.telefone;
         aux = aux->prox;
     }
     cout << endl;

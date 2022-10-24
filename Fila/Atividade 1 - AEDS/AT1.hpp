@@ -5,6 +5,7 @@ typedef struct Informacoes
 {
     char nome[50];
     int idade;
+    char telefone[9];
 };
 
 typedef struct Elemento *Apontador;
