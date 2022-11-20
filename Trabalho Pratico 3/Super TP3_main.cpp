@@ -114,7 +114,6 @@ int main() {
       case 2:
 
         char recebe;
-
         system("cls");
 
         recebe = retorno_triagem();

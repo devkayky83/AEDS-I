@@ -69,12 +69,12 @@ int VerificaTamanho(EstruturaFila *fila)
     return fila->tamanho;
 }
 
-void AdicionaMedicos(EstruturaFila *fila, Medico itemM)
+void AdicionaMedicos(EstruturaFila *fila, Medico item)
 {
     Apontador alvo;
 
     alvo = new Celula;
-    alvo->itemM = itemM;
+    alvo->itemM = item;
     alvo->prox = NULL;
 
     if (VerificaFilaVazia(fila))
@@ -114,29 +114,29 @@ void Prioridade(Paciente *itemP, int recebe)
     int prioridade;
     double Tempo_A;
 
-    if (recebe <= 5)
+    if (recebe >= 1 && recebe <= 5)
     {
-        prioridade = 1;
+        prioridade = 0;
         Tempo_A = 5;
     }
-    else if (recebe > 5 && recebe < 11)
+    else if (recebe > 5 && recebe <= 10)
     {
-        prioridade = 2;
+        prioridade = 1;
         Tempo_A = 4;
     }
-    else if (recebe > 11 && recebe < 16)
+    else if (recebe > 10 && recebe <= 15)
     {
-        prioridade = 3;
+        prioridade = 2;
         Tempo_A = 3;
     }
-    else if (recebe > 16 && recebe < 18)
+    else if (recebe > 15 && recebe <= 18)
     {
-        prioridade = 4;
+        prioridade = 3;
         Tempo_A = 2;
     }
-    else
+    else if (recebe == 0)
     {
-        prioridade = 5;
+        prioridade = 4;
         Tempo_A = 1;
     }
 
@@ -195,7 +195,7 @@ void AdicionaPrimeiro(EstruturaFila *fila, Paciente item)
     fila->tamanho++;
 }
 
-void AdicionaApos(EstruturaFila *fila, Apontador anterior, Apontador alvo)
+void AdicionaApos(Apontador anterior, Apontador alvo, EstruturaFila *fila)
 {
     alvo->prox = anterior->prox;
     anterior->prox = alvo;
@@ -228,13 +228,13 @@ void AdicionaPrioridade(EstruturaFila *fila, Paciente item)
     {
         if (alvo->itemP.prioridade < atual->itemP.prioridade)
         {
-            AdicionaApos(fila, anterior, alvo);
+            AdicionaApos(anterior, alvo, fila);
             return;
         }
             anterior = atual;
             atual = atual->prox;
     }
-    AdicionaApos(fila, anterior, alvo);
+    AdicionaApos(anterior, alvo, fila);
     fila->fim = alvo;
 }
 
@@ -253,6 +253,7 @@ void RetiraPaciente(EstruturaFila *fila, Paciente *item)
     *item = aux->itemP;
     fila->inicio = aux->prox;
     delete aux;
+    fila->tamanho--;
 }
 
 void ImprimeMedicos(EstruturaFila *fila)
@@ -468,6 +469,17 @@ int retorno_triagem()
             return i;
         }
     }
-    system("pause");
+    for (int i = 0; i < 18; i++)
+    {
+        if (recebe[i] != 'S')
+        {
+            cout << endl;
+            cout << "\n - Sua prioridade é de nivel azul! - nivel (4)";
+            cout << "\n ---------------------------------------------------" << endl;
+            system("pause");
+            i = 0;
+            return i;
+        }
+    }
 }
 
