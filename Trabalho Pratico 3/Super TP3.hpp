@@ -1,8 +1,6 @@
 #ifndef STP3_H
 #define STP3_H
 
-#define MAXTAM 5
-
 
 typedef struct Medico
 {
