@@ -153,7 +153,7 @@ void Prioridade(Paciente *itemP, int recebe)
     
     cout << "\n 2. Idade: ";
     cin >> itemP->idade;
-
+  
     cout << "\n 3. Bairro: ";
     cin.ignore();
     cin.getline(itemP->endP.bairro, 30);
@@ -253,19 +253,12 @@ void RetiraPaciente(EstruturaFila *fila, Paciente *item)
     *item = aux->itemP;
     fila->inicio = aux->prox;
     delete aux;
-    fila->tamanho--;
+    // fila->tamanho--;
 }
 
 void ImprimeMedicos(EstruturaFila *fila)
 {
     Apontador aux;
-
-    if (VerificaFilaVazia(fila))
-    {
-        cout << "\n Fila Vazia" << endl;
-        system("pause");
-        return;
-    }
 
     aux = fila->inicio;
 
@@ -285,7 +278,7 @@ void ImprimeMedicos(EstruturaFila *fila)
 
 void ImprimePacientes(EstruturaFila *fila)
 {
-    system("cls");
+  
     Apontador aux;
 
     if (VerificaFilaVazia(fila))
@@ -296,11 +289,6 @@ void ImprimePacientes(EstruturaFila *fila)
     }
 
     aux = fila->inicio;
-
-    system("cls");
-    cout << "\n ------------------------------";
-    cout << "\n     PACIENTES CADASTRADOS";
-    cout << "\n ------------------------------" << endl;
 
     while (aux != NULL)
     {
@@ -326,88 +314,46 @@ void ImprimePacientes(EstruturaFila *fila)
     system("pause");
 }
 
-void Atualiza(EstruturaFila *Pacientes, EstruturaFila *Atendidos, EstruturaFila *Medicos, EstruturaFila *Medicos_D)
+void Atualiza(EstruturaFila *Pacientes, EstruturaFila *Atendidos, Paciente *itemP, EstruturaFila *Medicos, Medico *ItemM, EstruturaFila *Medicos_D)
 {  
-        Apontador aux, aux2;
+    Apontador aux;
+    Apontador aux2;
 
-        aux = Pacientes->inicio;
-        aux2 = Medicos->inicio;
+    aux = Pacientes->inicio;
+    aux2 = Medicos->inicio;
 
-        aux2->itemM.disponivel = true;
+    aux2->itemM.disponivel = true;
 
-            cout << "\n   ATENDIMENTO ";
-            cout << "\n ----------------" << endl;
+    for (int i = 0; i < Medicos->tamanho; i++)
+    {
+        aux->itemP.HS = time(NULL);
+        aux->itemP.tempo =  aux->itemP.HS - aux->itemP.HC;
 
-            for (int i = 0; i < Medicos->tamanho; i++)
+        cout << "\n Paciente " << aux->itemP.nomeP << " foi atendido em: " << aux->itemP.tempo << " minutos"
+             << " pelo médico: " << aux2->itemM.nomeM;
+
+        cout << "\n Paciente atendido com sucesso!\n";
+
+        aux->itemP.atendido = true;
+        aux2->itemM.disponivel = false;
+
+        if (aux->itemP.atendido == true)
+        {
+            AdicionaPrioridade(Atendidos, aux->itemP);
+            RetiraPaciente(Pacientes, &aux->itemP);
+        }
+        if (Pacientes->tamanho == Atendidos->tamanho)
+        {
+            if (aux2->itemM.disponivel == true)
             {
-                aux->itemP.HS = time(NULL);
-                aux->itemP.tempo = aux->itemP.HS - aux->itemP.HC;
-
-                cout << "\n Paciente: " << aux->itemP.nomeP << ", foi atendido em " << aux->itemP.tempo 
-                << " minutos, pelo medico: " << aux2->itemM.nomeM << endl;
-
-                cout << "\n Paciente atendido com sucesso!" << endl;
-
-                aux->itemP.atendido = true;
-                aux->itemM.disponivel = false;
-
-                if (aux->itemP.atendido == true)
-                {
-                    AdicionaPrioridade(Atendidos, aux->itemP);
-                    RetiraPaciente(Pacientes, &aux->itemP);
-                }
-                if (Pacientes->tamanho == Atendidos->tamanho)
-                {
-                    if (aux2->itemM.disponivel == true)
-                    {
-                        AdicionaMedicos(Medicos_D, aux2->itemM);
-                    }
-                    break;
-                }
-                aux2 = aux2->prox;
-                aux = aux->prox;
-                Sleep(1000);
+                AdicionaMedicos(Medicos_D, aux2->itemM);
             }
-}
-
-void ImprimeAtendimento(EstruturaFila Pacientes, EstruturaFila Atendidos, EstruturaFila Medicos, EstruturaFila Medicos_D)
-{
-    char decisao;
-    system("cls");
-
-        if (VerificaTamanho(&Pacientes) == 0)
-        {
-            cout << "\n Não há pacientes para serem atendidos!";
+            break; // Se todos os pacientes forem atendidos e sobrar algum medico, volta para o menu.
         }
-        else if (VerificaTamanho(&Medicos) == 0)
-        {
-            cout << "\n Não há medicos para atender os pacientes!";
-        }
-        else
-        {
-            Atualiza(&Pacientes, &Atendidos, &Medicos, &Medicos_D);
-
-            cout << "\n Deseja atualizar? (S) para sim, (N) para não: ";
-            cin >> decisao;
-
-            while(decisao == 'S' || decisao == 's')
-            {
-                if (VerificaTamanho(&Atendidos) == VerificaTamanho(&Pacientes))
-                {
-                    cout << "\n Todos os pacientes foram atendidos com sucesso!" << endl;
-                    system("pause");
-                    break;
-                }
-                else
-                {
-                    Atualiza(&Medicos, &Medicos_D, &Pacientes, &Atendidos);
-
-                    cout << "\n Deseja atualizar? (S) para sim, (N) para não: ";
-                    cin >> decisao;
-                }
-                break;
-            }
-        }
+        aux2 = aux2->prox;
+        aux = aux->prox;
+        Sleep(1000);
+    }
 }
 
 int retorno_triagem()
@@ -452,14 +398,14 @@ int retorno_triagem()
                 cout << "\n ---------------------------------------------------" << endl;
                 system("pause");
             }
-            else if (i > 10 && i <= 15)
+            else if (i > 10 && i < 15)
             {
                 cout << endl;
                 cout << "\n - Sua prioridade é de nivel amarelo! - nivel (2)";
                 cout << "\n ---------------------------------------------------" << endl;
                 system("pause");
             }
-            else if (i > 15 && i <= 18)
+            else if (i >= 15 && i <= 18)
             {
                 cout << endl;
                 cout << "\n - Sua prioridade é de nivel verde! - nivel (3)";

@@ -22,7 +22,6 @@ typedef struct Paciente
     char nomeP[50];
     int idade;
     char sexo[15];
-    char triagem[18];
     int prioridade;
     double tempo;
     bool atendido = false;
