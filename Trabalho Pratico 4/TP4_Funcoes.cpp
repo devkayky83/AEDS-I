@@ -6,7 +6,7 @@ using namespace std;
 
 void viagensLinha(tipoLista *linha, int *id)
 {
-    //Linha Principal
+    // Linha Principal
     tipoItem item;
     item.id = *id;
     *id += 1;
@@ -17,7 +17,7 @@ void viagensLinha(tipoLista *linha, int *id)
 
     tipoItemDupla parada;
 
-    //saida da linha - BH
+    // Saida da linha - BH
     parada.id = item.id;
     item.id++;
     parada.horarioChegada = "01:00";
@@ -27,7 +27,7 @@ void viagensLinha(tipoLista *linha, int *id)
 
     insereListaUltimoDupla(&item.paradas, parada);
 
-    //linha Itabira
+    // Linha Itabira
     parada.id = item.id;
     item.id++;
     parada.horarioChegada = "01:50";
@@ -37,7 +37,7 @@ void viagensLinha(tipoLista *linha, int *id)
 
     insereListaUltimoDupla(&item.paradas, parada);
 
-    //linha Santa Maria de Itabira
+    // Linha Santa Maria de Itabira
     parada.id = item.id;
     item.id++;
     parada.horarioChegada = "05:15";
@@ -47,7 +47,7 @@ void viagensLinha(tipoLista *linha, int *id)
 
     insereListaUltimoDupla(&item.paradas, parada);
 
-    //linha Guanhaes
+    // Linha Guanhaes
     parada.id = item.id;
     item.id++;
     parada.horarioChegada = "06:15";
@@ -57,7 +57,7 @@ void viagensLinha(tipoLista *linha, int *id)
 
     insereListaUltimoDupla(&item.paradas, parada);
 
-    //linha SJE
+    // Linha SJE
     parada.id = item.id;
     item.id++;
     parada.horarioChegada = "09:25";
@@ -66,7 +66,6 @@ void viagensLinha(tipoLista *linha, int *id)
     parada.passagem = 54.18;
 
     insereListaUltimoDupla(&item.paradas, parada);
-
     insereListaUltimo(linha, &item);
 }
 

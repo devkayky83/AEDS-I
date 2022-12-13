@@ -54,7 +54,8 @@ void insereAposElementoDupla(tipoListaDupla *lista, tipoItemDupla item, int id)
     {
         cout << "\n Cidade inexistente.\n" << endl;
         return;
-    }else
+    }
+    else
     {
         cout << "\n Parada inserida.\n";
         return;
@@ -66,7 +67,8 @@ void insereAposElementoDupla(tipoListaDupla *lista, tipoItemDupla item, int id)
     if (atual == lista->ultimo)
     {
         insereListaUltimoDupla(lista, item);
-    }else
+    }
+    else
     {
         inserido->prox = atual->prox;
         inserido->ant = atual;
@@ -111,7 +113,8 @@ tipoItemDupla retiraIDDupla(tipoListaDupla *lista, int id)
         {
             lista->ultimo = atual->ant;
             lista->primeiro->ant = lista->ultimo;
-        }else
+        }
+        else
         {
             atual->prox->ant = atual->ant;
         }

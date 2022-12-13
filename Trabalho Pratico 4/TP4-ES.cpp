@@ -85,7 +85,8 @@ void insereListaAposElemento(tipoLista *lista, tipoItem *item, int id)
         cout << "\n Item inserido com sucesso!";
         atualizaUltimo(lista);
         lista->tamanho++;
-    }else
+    }
+    else
     {
         cout << "\n Elemento anterior não encontrado na lista.";
     }

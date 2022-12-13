@@ -1,3 +1,6 @@
+// Senha de acesso: MenosQueTotalNaoEValido
+// Desenvolvido por: Calebe Ribeiro e Kayky Júnio
+
 #include <iostream>
 #include "TP4_Funcoes.cpp"
 #include <windows.h>
@@ -12,7 +15,7 @@ int main()
 
     int idLinhas = 1;
     string senha;
-    string senhaCorreta = "viajens123";
+    string senhaCorreta = "MenosQueTotalNaoEValido";
 
     tipoLista linhas;
     criarListaVazia(&linhas);
@@ -21,7 +24,7 @@ int main()
     imprimeListaDupla(&linhas.ultimo->item.paradas);
     int escolha;
 
-    while(escolha != 0)
+    while (escolha != 0)
     {
         menu();
         cout << "\n Digite oque deseja acessar: ";
@@ -31,7 +34,8 @@ int main()
         {
             system("cls");
             encontreLinha(&linhas);
-        }else if (escolha == 2)
+        }
+        else if (escolha == 2)
         {
             system("cls");
             cout << "\n Informe a senha: ";
@@ -41,7 +45,8 @@ int main()
             {
                 system("cls");
                 alteracaoCompleta(&linhas, &idLinhas);
-            }else
+            }
+            else
             {
               cout << endl;
               cout << "\n Senha incorreta!" << endl;
