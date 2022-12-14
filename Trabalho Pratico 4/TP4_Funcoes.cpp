@@ -189,13 +189,13 @@ void criarLinha(tipoLista *linhas, int *id)
     tipoItem item;
     item.id = *id;
 
-    cout << "\n Informe o nome da companhia que deseja adcionar: ";
+    cout << "\n Informe o nome da companhia que deseja adicionar: ";
     cin >> item.companhia;
 
     cout << "\n Insira o nome (código) da linha: ";
     cin >> item.linha;
 
-    cout << "\n\n Linha criada.\n\n";
+    cout << "\n\n Linha criada!\n\n";
 
     criarListaVaziaDupla(&item.paradas);
     insereListaUltimo(linhas, &item);
@@ -207,7 +207,7 @@ void criarParada(tipoLista *linhas)
 {
     int id;
 
-    cout << "\n Informe o ID que sera adcionado na parada: ";
+    cout << "\n Informe o ID que sera adicionado na parada: ";
     cin >> id;
 
     Apontador aux = pesquisaItem(linhas, id);
@@ -233,8 +233,9 @@ void criarParada(tipoLista *linhas)
 
     if(verificaListaVaziaDupla(&aux->item.paradas))
     {
-        cout << "\n Linha nao contem paradas!" << endl;
-        cout << "\n A parada foi inserida!" << endl;
+        cout << "\n -----------------------------";
+        cout << "\n  A linha não contem paradas!" << endl;
+        cout << "\n  A parada foi inserida!" << endl;
 
         insereListaUltimoDupla(&aux->item.paradas, parada);
 
@@ -279,7 +280,7 @@ void mudarParada(tipoLista *linhas)
 
     imprimeListaDupla(&aux->item.paradas);
 
-    cout << "\n Codigo da Parada que deseja alterar: ";
+    cout << "\n Codigo da parada que deseja alterar: ";
     cin >> id;
 
     ApontadorDupla aux1;
@@ -410,7 +411,6 @@ void alteracaoCompleta(tipoLista *linhas, int *id)
             default:
                 break;
         }
-        system("pause");
         system("cls");
     }
 }
